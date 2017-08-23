@@ -15,6 +15,9 @@ roles = ['Overwatch', 'PUBG']
 
 @bot.event
 async def on_message(message):
+    if message.channel.name != "beepboop":
+        return
+
     if message.content.startswith('!deleteme'):
         msg = await bot.send_message(message.channel, 'I will delete myself now...')
         await bot.delete_message(msg)

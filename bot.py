@@ -11,7 +11,7 @@ module.
 There are a number of utility commands being showcased here.'''
 bot = commands.Bot(command_prefix='?', description=description)
 
-roles = ['Overwatch', 'PUBG']
+roles = ['Overwatch', 'PUBG', 'GrimDawn']
 
 @bot.event
 async def on_message(message):
@@ -41,8 +41,8 @@ async def on_message(message):
     		return
 
     	# Check for role
-    	role_string = message.content[1:]
-    	if role_string not in roles:
+    	role_string = message.content[1:].lower()
+    	if role_string not in map(str.lower, roles):
     		print(role_string + " not in roles!")
     		await bot.send_message(message.channel, "Beep boop! Command not found!")
     		return
@@ -50,7 +50,7 @@ async def on_message(message):
     	# Find role
     	role = None
     	for _role in message.server.roles:
-    		if _role.name == role_string:
+    		if _role.name.lower() == role_string.lower():
     			role = _role;
 
     	# Check if author already has the role

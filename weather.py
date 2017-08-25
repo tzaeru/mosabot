@@ -43,7 +43,7 @@ def get_weather(location):
 	formatted += current["location"]["country"] + " - " + current["location"]["region"] + " - " + current["location"]["name"] + " - " + current["current"]["last_updated"] + "\n\n"
 	# Now
 	# Real now
-	formatted += "Now: " + " (" + str(current["current"]["last_updated"]) + ")" + parse_weather_data(current["current"]) + '\n'
+	formatted += "**Now:** " + " (" + str(current["current"]["last_updated"]) + ")" + parse_weather_data(current["current"]) + "\n\n"
 	# Fake now
 	#formatted += "Now: " + parse_weather_data(current['forecast']['forecastday'][0]['hour'][datetime.datetime.now().hour]) + '\n'
 
@@ -52,25 +52,25 @@ def get_weather(location):
 	if hour > 23:
 		day = 1
 		hour = 0 + hour - 24
-	formatted += "3h: " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
+	formatted += "**3h:** " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
 
 	hour = datetime.datetime.now().hour + 6
 	if hour > 23:
 		day = 1
 		hour = 0 + hour - 24
-	formatted += "6h: " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
+	formatted += "**6h:** " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
 
 	hour = datetime.datetime.now().hour + 12
 	if hour > 23:
 		day = 1
 		hour = 0 + hour - 24
-	formatted += "12h: " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
+	formatted += "**12h:** " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
 
 	hour = datetime.datetime.now().hour + 24
 	if hour > 23:
 		day = 1
 		hour = 0 + hour - 24
-	formatted += "24h: " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
+	formatted += "**24h:** " + parse_weather_data(current['forecast']['forecastday'][day]['hour'][hour]) + '\n'
 
 	icon = current["current"]["condition"]["icon"]
 
